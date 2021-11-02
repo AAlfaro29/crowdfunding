@@ -3,11 +3,12 @@ import { useHistory } from 'react-router-dom';
 const CreateProjectForm = () => {
   const history = useHistory();
   const [projectInfo, setProjectInfo] = useState({
-    projectTitle: '',
-    projectDescription: '',
-    projectGoal: '',
-    projectImage: '',
-    projectIsOpen: '',
+    title: '',
+    description: '',
+    goal: '',
+    image: '',
+    is_open: '',
+    date_created: new Date(),
   });
   const handleChange = (event) => {
     const { id, value } = event.target;
@@ -28,18 +29,12 @@ const CreateProjectForm = () => {
         "Authorization": `Token ${token}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        title: "Hello",
-        date_created: new Date(),
-        description: "Hello Alison",
-        goal: 12,
-        is_open: true,
-        image: 'http://google.com'
-      }),
+      body: JSON.stringify(projectInfo),
     });
     return response.json();
   };
   const handleSubmit = (e) => {
+      console.log("This is my data",projectInfo)
     e.preventDefault();
     // if (window.localStorage.getItem('token')) {
     postData().then((response) => {
@@ -55,7 +50,7 @@ const CreateProjectForm = () => {
         <label htmlFor='projectName'>Project Title:</label>
         <input
           type='text'
-          id='projectTitle'
+          id='title'
           placeholder='Enter project name'
           onChange={handleChange}
         />
@@ -64,7 +59,7 @@ const CreateProjectForm = () => {
         <label htmlFor='projectDescription'>Project Description:</label>
         <input
           type='text'
-          id='projectDescription'
+          id='description'
           placeholder='Description'
           onChange={handleChange}
         />
@@ -73,7 +68,7 @@ const CreateProjectForm = () => {
         <label htmlFor='projectGoal'>Project Goal:</label>
         <input
           type='text'
-          id='projectGoal'
+          id='goal'
           placeholder='Goal'
           onChange={handleChange}
         />
@@ -82,7 +77,7 @@ const CreateProjectForm = () => {
         <label htmlFor='projectImage'>Project Image:</label>
         <input
           type='text'
-          id='projectImage'
+          id='image'
           placeholder='Image'
           onChange={handleChange}
         />
@@ -91,7 +86,7 @@ const CreateProjectForm = () => {
         <label htmlFor='projectIsOpen'>Project Is Open?</label>
         <input
           type='text'
-          id='projectIsOpen'
+          id='is_open'
           placeholder='IsOpen'
           onChange={handleChange}
         />
