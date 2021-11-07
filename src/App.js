@@ -5,6 +5,7 @@ import HomePage from "./pages/HomePage";
 import LoginPage from "./pages/LoginPage";
 import ProjectPage from "./pages/ProjectPage";
 import CreateProjectPage from "./pages/CreateProjectPage";
+import CreatePledgePage from "./pages/CreatePledgePage";
 
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
             </Route>
             <Route path="/createprojectpage">
             <CreateProjectPage />
+            </Route>
+            <Route path="/createpledgepage">
+            <CreatePledgePage />
             </Route>
             <Route path="/">
             <HomePage />
